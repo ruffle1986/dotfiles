@@ -1,30 +1,35 @@
 set nocompatible
+
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
-Plugin 'gmarik/vundle'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'morhetz/gruvbox'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'chriskempson/base16-vim'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'pangloss/vim-javascript'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'vim-scripts/loremipsum'
 
 filetype plugin indent on
 
-set number
-
 " Theme
 syntax enable
-set t_Co=256
-colorscheme OceanicNext
 set background=dark
+" cd ~/.vim/colors
+" wget https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
+colorscheme jellybeans
 
-let mapleader = ','
+let mapleader=' '
 
-nmap <leader>w  :w<cr>
-nmap <leader>q  :q<cr>
-nmap <leader>wq  :wq<cr>
+noremap <leader>w  :w!<cr>
+noremap <leader>q  :q!<cr>
+noremap <leader>wq  :wq<cr>
+map <leader>s :source ~/.vimrc<CR>
 
 set history=700
 
@@ -52,8 +57,58 @@ set tabstop=2
 
 set shell=bash
 
-set cc=80
+" set mouse=a
 
-set mouse=a
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+let g:EditorConfig_core_mode = 'external_command'
+" let g:EditorConfig_verbose = 1
 
-autocmd BufWritePre * :%s/\s\+$//e
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set nostartofline
+
+set title
+
+set showcmd
+
+set cursorline
+
+let g:PreserveNoEOL_Function = function('PreserveNoEOL#Python#Preserve')
+
+set clipboard=unnamed
+
+" Sane indenting
+vnoremap < <gv
+vnoremap > >gv
+
+filetype plugin on
+filetype indent on
+
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+
+set laststatus=2
+set timeoutlen=50
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+set relativenumber
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+map <BS> gT
+map <Tab> gt
+
+:noremap % v%
