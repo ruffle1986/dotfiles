@@ -119,8 +119,6 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 call plug#begin('~/.vim/plugged')
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'https://github.com/heavenshell/vim-jsdoc'
 Plug 'https://github.com/Valloric/YouCompleteMe'
@@ -129,6 +127,7 @@ Plug 'https://github.com/ternjs/tern_for_vim'
 Plug 'tpope/vim-surround'
 Plug 'https://github.com/vim-syntastic/syntastic'
 Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 let g:javascript_plugin_jsdoc = 1
